@@ -11,7 +11,7 @@ class Solution:
         hsh = set()
         while slow:
             if slow in hsh:
-                break
+                return slow
             hsh.add(slow)
             slow = slow.next
         else:
@@ -19,5 +19,5 @@ class Solution:
         
         # print(slow.val)
 
-        return slow
+        # return slow
         
