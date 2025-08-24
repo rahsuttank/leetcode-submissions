@@ -7,7 +7,6 @@ class Solution:
         while sell < len(prices):
             while sell + 1 < n and prices[sell + 1] > prices[sell]:
                 sell += 1
-            print(buy, sell)
             if sell < n:
                 profit += (prices[sell] - prices[buy])
             buy = sell + 1
