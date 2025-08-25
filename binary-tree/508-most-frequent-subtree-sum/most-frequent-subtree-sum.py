@@ -13,7 +13,6 @@ class Solution:
             if node is None:
                 return 0
             tmp = 0
-            # if node.left:
             tmp += dfs(node.left)
             tmp += dfs(node.right)
             tmp += node.val
@@ -22,7 +21,8 @@ class Solution:
         
         dfs(root)
         # res = []
-        res = [key for key in ans.keys() if ans[key] == max(ans.values())]
+        maxFreq = max(ans.values())
+        res = [key for key in ans.keys() if ans[key] == maxFreq]
         # print(maxKey)
         # for key, freq in ans.items():
         return res
