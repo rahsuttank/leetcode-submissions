@@ -14,7 +14,7 @@ class Solution:
             s1 -= 1
             s2 -= 1
         
-        return "".join(ans[::-1])
+        return "".join(reversed(ans))
 
 
 
