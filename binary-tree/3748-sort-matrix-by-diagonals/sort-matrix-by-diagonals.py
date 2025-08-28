@@ -6,19 +6,17 @@ class Solution:
         for r in range(rows):
             for c in range(cols):
                 key = r - c
-                dirA[key].append(grid[r][c])
-
-        for key in dirA.keys():
-            if key < 0:
-                dirA[key] = sorted(dirA[key], reverse = True)
-            else:
-                dirA[key] = sorted(dirA[key])
-        
-        # print(dirA)
+                if key < 0:
+                    heapq.heappush(dirA[key], (grid[r][c]))
+                else:
+                    heapq.heappush(dirA[key], (-grid[r][c]))
 
         for r in range(rows):
             for c in range(cols):
                 key = r - c
-                grid[r][c] = dirA[key].pop()
+                if key < 0:
+                    grid[r][c] = heapq.heappop(dirA[key])
+                else:
+                    grid[r][c] = -heapq.heappop(dirA[key])
         
         return grid
