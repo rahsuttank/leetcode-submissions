@@ -6,9 +6,9 @@ class Solution:
             if c in vowels:
                 vCt += 1
 
-        if vCt % 2 == 1 or (vCt % 2 == 0 and vCt != 0):
-            return True
+        if vCt == 0:
+            return False
     
-        return False
+        return True
 
         
