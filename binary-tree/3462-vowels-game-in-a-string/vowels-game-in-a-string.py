@@ -1,6 +1,6 @@
 class Solution:
     def doesAliceWin(self, s: str) -> bool:
-        vowels = set("AEIOUaeiou")
+        vowels = "AEIOUaeiou"
         vCt = 0
         for c in s:
             if c in vowels:
