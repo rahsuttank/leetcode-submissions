@@ -7,14 +7,9 @@ class Solution:
                 vCt += 1
             else:
                 sCt += 1
-        if vCt % 2 == 1:
+        if vCt % 2 == 1 or (vCt % 2 == 0 and vCt != 0):
             return True
-        elif vCt % 2 == 0 and vCt != 0:
-            return True
-        
-        # if () or vCt == 1:
-        #     return True
-
+    
         return False
 
         
