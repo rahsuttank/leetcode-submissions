@@ -3,11 +3,8 @@ class Solution:
         vCt = 0
         for c in s:
             if c in "aeiou":
-                vCt += 1
+                return True
 
-        if vCt == 0:
-            return False
-    
-        return True
+        return False
 
         
