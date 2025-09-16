@@ -1,12 +1,18 @@
 class Solution:
     def removeDuplicates(self, s: str, k: int) -> str:
-        stk = []
-        for c in s:
-            if stk and c == stk[-1][0]:
-                stk[-1][1] += 1
-                if stk[-1][1] == k:
-                    stk.pop()
+        s = list(s)  # work in place
+        count = [0] * len(s)  # parallel counts
+        i = 0  # write pointer
+
+        for j in range(len(s)):  # read pointer
+            s[i] = s[j]
+            if i > 0 and s[i] == s[i - 1]:
+                count[i] = count[i - 1] + 1
             else:
-                stk.append([c, 1])
-        return "".join([x * cnt for x, cnt in stk])
-                    
+                count[i] = 1
+
+            if count[i] == k:  # remove last k chars
+                i -= k
+            i += 1
+
+        return "".join(s[:i])
