@@ -15,9 +15,11 @@ class NumberContainers:
         heap = self.num_heaps[number]
         if not heap:
             return -1
-        while heap and self.idx_num[heap[0]] != number:
+        while heap:
+            if self.idx_num[heap[0]] == number:
+                return heap[0]
             heapq.heappop(heap)
-        return heap[0] if heap else -1
+        return -1
         
 
 
