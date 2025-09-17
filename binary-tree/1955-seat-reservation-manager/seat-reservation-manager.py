@@ -8,7 +8,7 @@ class SeatManager:
 
     def reserve(self) -> int:
         _, seat = heapq.heappop(self.reserve_heap)
-        heapq.heappush(self.reserve_heap, [1, seat])
+        # heapq.heappush(self.reserve_heap, [1, seat])
         return seat+1
 
 
