@@ -9,23 +9,18 @@ class FoodRatings:
             self.food_to_cuisine[foods[i]] = cuisines[i]
             self.food_to_rating[foods[i]] = ratings[i]
         
-        # for key in self.cuisinesHeaps.keys():
-        #     heapq.heapify(self.cuisinesHeaps[key])
-        
 
     def changeRating(self, food: str, newRating: int) -> None:
         cuisine = self.food_to_cuisine[food]
         self.food_to_rating[food] = newRating
         heapq.heappush(self.cuisinesHeaps[cuisine], [-newRating, food])
 
-        
 
     def highestRated(self, cuisine: str) -> str:
         heap = self.cuisinesHeaps[cuisine]
-        
-
         while -heap[0][0] != self.food_to_rating[heap[0][1]]:
             heapq.heappop(heap)
+
         return heap[0][1]
         
 
