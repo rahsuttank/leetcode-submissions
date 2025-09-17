@@ -7,8 +7,7 @@ class SeatManager:
         
 
     def reserve(self) -> int:
-        seat = heapq.heappop(self.reserve_heap)
-        return seat
+        return heapq.heappop(self.reserve_heap)
 
 
     def unreserve(self, seatNumber: int) -> None:
