@@ -24,15 +24,17 @@ class TaskManager:
         
 
     def execTop(self) -> int:
-        heap = self.task_heap
-        mp = self.task_map
-        while heap:
-            if -heap[0][1] in mp and - heap[0][0] == mp[-heap[0][1]][0] and mp[-heap[0][1]][2] == 1:
-                pop = heapq.heappop(heap)
-                userId = mp[-pop[1]][1]
-                del mp[-pop[1]]
+        while self.task_heap:
+            priority, taskId = self.task_heap[0]
+            taskId, priority = -taskId, -priority
+            if (taskId in self.task_map and 
+                self.task_map[taskId][0] == priority and 
+                self.task_map[taskId][2] == 1):
+                heapq.heappop(self.task_heap)
+                userId = self.task_map[taskId][1]
+                del self.task_map[taskId]   # remove after execution
                 return userId
-            heapq.heappop(heap)
+            heapq.heappop(self.task_heap)  # discard stale entry
         return -1
         
 
