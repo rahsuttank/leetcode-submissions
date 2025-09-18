@@ -14,13 +14,13 @@ class TaskManager:
         
 
     def edit(self, taskId: int, newPriority: int) -> None:
-        cur = self.task_map[taskId]
-        self.task_map[taskId] = [newPriority, cur[1], 1]
+        # cur = self.task_map[taskId]
+        self.task_map[taskId][0] = newPriority
         heapq.heappush(self.task_heap, [-newPriority, -taskId])
 
     def rmv(self, taskId: int) -> None:
-        cur = self.task_map[taskId]
-        self.task_map[taskId] = [cur[0], cur[1], 0]
+        # cur = self.task_map[taskId]
+        self.task_map[taskId][2] = 0
         
 
     def execTop(self) -> int:
