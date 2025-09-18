@@ -20,7 +20,7 @@ class TaskManager:
 
     def rmv(self, taskId: int) -> None:
         # cur = self.task_map[taskId]
-        self.task_map[taskId][2] = 0
+        del self.task_map[taskId]
         
 
     def execTop(self) -> int:
