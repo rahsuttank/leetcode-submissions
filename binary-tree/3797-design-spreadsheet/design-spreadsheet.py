@@ -23,21 +23,30 @@ class Spreadsheet:
         
 
     def getValue(self, formula: str) -> int:
-        op1, op2 = formula.replace("=","").split("+")
-        if op1[0] in self.cols:
-            col1 = op1[0]
-            cel1 = op1[1:]
-            operand1 = self.sheet[col1][cel1] if cel1 in self.sheet[col1] else "0"
-        else:
-            operand1 = op1
-        if op2[0] in self.cols:
-            col2 = op2[0]
-            cel2 = op2[1:]
-            operand2 = self.sheet[col2][cel2] if cel2 in self.sheet[col2] else "0"
-        else:
-            operand2 = op2
+        ops = formula.replace("=","").split("+")
+        operands = []
+        for op in ops:
+            if op[0] in self.cols:
+                col = op[0]
+                cel = op[1:]
+                operands.append(self.sheet[col][cel] if cel in self.sheet[col] else "0")
+            else:
+                operands.append(op)
 
-        return int(operand1) + int(operand2)
+        # if op1[0] in self.cols:
+        #     col1 = op1[0]
+        #     cel1 = op1[1:]
+        #     operand1 = self.sheet[col1][cel1] if cel1 in self.sheet[col1] else "0"
+        # else:
+        #     operand1 = op1
+        # if op2[0] in self.cols:
+        #     col2 = op2[0]
+        #     cel2 = op2[1:]
+        #     operand2 = self.sheet[col2][cel2] if cel2 in self.sheet[col2] else "0"
+        # else:
+        #     operand2 = op2
+
+        return int(operands[0]) + int(operands[1])
 
         # op2
         return 10
