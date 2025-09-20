@@ -26,7 +26,17 @@ class Router:
         if self.router:
             t = self.router.popleft()
             self.table.remove(t)
-            self.destMap[t[1]].remove(t[2])
+            arr = self.destMap[t[1]]
+            l, r = 0, len(arr)
+            while l < r:
+                m = (l + r) // 2
+                if arr[m] < t[2]:
+                    l = m + 1
+                elif arr[m] > t[2]:
+                    r = m
+                else:
+                    del arr[m]
+                    break
             return list(t)
         else:
             return []
