@@ -4,7 +4,7 @@ class Router:
         self.router = deque()
         self.table = set()
         self.limit = memoryLimit
-        self.destMap = defaultdict(list)
+        self.destMap = defaultdict(deque)
         
 
     def addPacket(self, source: int, destination: int, timestamp: int) -> bool:
@@ -17,7 +17,7 @@ class Router:
         if len(self.router) > self.limit:
             t = self.router.popleft()
             self.table.remove(t)
-            self.destMap[t[1]].remove(t[2])
+            self.destMap[t[1]].popleft()
         return True
             
         
@@ -26,23 +26,15 @@ class Router:
         if self.router:
             t = self.router.popleft()
             self.table.remove(t)
-            arr = self.destMap[t[1]]
-            l, r = 0, len(arr)
-            while l < r:
-                m = (l + r) // 2
-                if arr[m] < t[2]:
-                    l = m + 1
-                elif arr[m] > t[2]:
-                    r = m
-                else:
-                    del arr[m]
-                    break
+            self.destMap[t[1]].popleft()
             return list(t)
         else:
             return []
         
 
     def getCount(self, destination: int, startTime: int, endTime: int) -> int:
+        if destination not in self.destMap:
+            return 0
         high = 0
         low = 0
         arr = self.destMap[destination]
