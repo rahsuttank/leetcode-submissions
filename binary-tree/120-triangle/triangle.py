@@ -1,7 +1,7 @@
 class Solution:
     def minimumTotal(self, triangle: List[List[int]]) -> int:
         n = len(triangle)
-        dp = [[float("-inf")] * len(triangle[x]) for x in range(len(triangle))]
+        dp = [[0] * len(triangle[x]) for x in range(len(triangle))]
         dp[0][0] = triangle[0][0]
         for i in range(1, n):
             l = len(triangle[i-1])
@@ -12,9 +12,6 @@ class Solution:
                     dp[i][j] = dp[i-1][j]+ triangle[i][j]
                 else:
                     dp[i][j] = dp[i-1][j-1]+ triangle[i][j]
-
-            
-        # print(dp)
 
         return min(dp[-1])
         
