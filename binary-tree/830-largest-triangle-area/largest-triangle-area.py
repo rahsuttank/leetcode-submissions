@@ -8,7 +8,7 @@ class Solution:
                 x2, y2 = points[j][0], points[j][1]
                 for k in range(j, len(points)):
                     x3, y3 = points[k][0], points[k][1]
-                    curArea = (1/2) * abs(x1*(y2-y3) + x2*(y3-y1) + x3*(y1-y2))
+                    curArea = abs(x1*(y2-y3) + x2*(y3-y1) + x3*(y1-y2))
                     area = max(area, curArea)
 
-        return area
+        return area/2
