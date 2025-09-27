@@ -3,11 +3,11 @@ class Solution:
         i, j, k = 0, 0, 0
         area = 0
         for i in range(len(points)):
-            x1, y1 = points[i][0], points[i][1]
+            x1, y1 = points[i]
             for j in range(i, len(points)):
-                x2, y2 = points[j][0], points[j][1]
+                x2, y2 = points[j]
                 for k in range(j, len(points)):
-                    x3, y3 = points[k][0], points[k][1]
+                    x3, y3 = points[k]
                     curArea = abs(x1*(y2-y3) + x2*(y3-y1) + x3*(y1-y2))
                     area = max(area, curArea)
 
