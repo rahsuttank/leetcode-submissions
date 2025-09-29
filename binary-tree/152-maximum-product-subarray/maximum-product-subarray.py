@@ -1,6 +1,5 @@
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
-        dp = [float("-inf")] * len(nums)
 
         cur_max = nums[0]
         cur_min = nums[0]
