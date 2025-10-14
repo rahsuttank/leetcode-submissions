@@ -12,6 +12,7 @@ class Solution:
 
             else:
                 ct = k - 1
+                i += k
 
         return False
 
