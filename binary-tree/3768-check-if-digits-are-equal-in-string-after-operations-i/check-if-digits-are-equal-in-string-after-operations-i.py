@@ -4,11 +4,10 @@ class Solution:
         newDig = []
         while len(digits) > 2:
             for i in range(len(digits) - 1):
-                dig = (int(digits[i]) + int(digits[i+1])) % 10
+                dig = ((ord(digits[i]) - 48) + (ord(digits[i + 1]) - 48)) % 10
                 newDig.append(str(dig))
             digits = newDig
             newDig = []
         
-        # print(digits)
         return digits[0] == digits[1]
         
